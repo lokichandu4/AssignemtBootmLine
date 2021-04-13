@@ -1,14 +1,15 @@
 package utility;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import runner.BaseClass;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.function.Function;
 
 public class GenericUtilities extends BaseClass {
@@ -47,4 +48,38 @@ public class GenericUtilities extends BaseClass {
         }
     }
 
+    public static WebElement waitUntilElementPresent(By locator) {
+        try {
+            return new WebDriverWait(driver, ELEMENT_INTERACTION_TIMEOUT_SECS).until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (TimeoutException e) {
+            Assert.fail("Failed to verify element is displayed: " + locator);
+            throw e;
+        } catch (Exception ignored) {
+            return null;
+        }
+    }
+
+    public static WebElement waitUntilElementDisplayed(WebElement element) {
+        try {
+            return new WebDriverWait(driver, ELEMENT_INTERACTION_TIMEOUT_SECS).until(ExpectedConditions.visibilityOf(element));
+        } catch (TimeoutException e) {
+            Assert.fail("Failed to verify element is displayed: " + element);
+            throw e;
+        } catch (Exception ignored) {
+            return null;
+        }
+    }
+
+    public static boolean verifyListOfWebElementsDisplayed(WebDriver driver, WebElement... webElements) {
+        for (WebElement element : webElements) {
+            GenericUtilities.waitUntilElementDisplayed(element);
+            if (!element.isDisplayed()) return false;
+        }
+        return true;
+    }
+
+    public static String currentDate(String pattern) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(new Date());
+    }
 }

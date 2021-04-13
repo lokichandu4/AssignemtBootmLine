@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="AssignmentBootmLine" />
+        <module name="Lokesh_Kumar_AssignmentBottomLine" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AssignmentBottomLine" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

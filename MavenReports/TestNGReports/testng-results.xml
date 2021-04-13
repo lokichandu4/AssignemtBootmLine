@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="2" total="2" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="21957" started-at="2021-04-13T10:41:07Z" finished-at="2021-04-13T10:41:29Z">
+    <groups>
+      <group name="cucumber scenarios">
+        <method signature="TestRunner.scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" class="runner.TestRunner"/>
+      </group> <!-- cucumber scenarios -->
+    </groups>
+    <test name="Test" duration-ms="21957" started-at="2021-04-13T10:41:07Z" finished-at="2021-04-13T10:41:29Z">
+      <class name="runner.TestRunner">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:runner.TestRunner@3f49dace]" name="beforeSuite" is-config="true" duration-ms="32" started-at="2021-04-13T16:11:07Z" finished-at="2021-04-13T16:11:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:runner.TestRunner@3f49dace]" name="beforeClass" is-config="true" duration-ms="110" started-at="2021-04-13T16:11:07Z" finished-at="2021-04-13T16:11:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="FAIL" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" duration-ms="19718" started-at="2021-04-13T16:11:07Z" data-provider="scenarios" finished-at="2021-04-13T16:11:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify that an email sent from one Gmail account can be received by another Gmail account"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["ComposeMail"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Oauth 2.0 not stoping browser automation expected [Couldn't sign you in] but found [sign in]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Oauth 2.0 not stoping browser automation expected [Couldn't sign you in] but found [sign in]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertEquals(Assert.java:123)
+	at org.testng.Assert.assertEquals(Assert.java:176)
+	at pages.LoginPage.verifyHiUserPageLoaded(LoginPage.java:57)
+	at step.LoginSteps.userLoggedInUsingUsernameAndPassword(LoginSteps.java:53)
+	at ✽.User logged in using username and password(file:src/test/java/featurefile/ComposeMail.feature:6)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenario -->
+        <test-method status="FAIL" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" duration-ms="2002" started-at="2021-04-13T16:11:27Z" data-provider="scenarios" finished-at="2021-04-13T16:11:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify that an email sent from one Gmail account can be received by another Gmail account"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["ComposeMail"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at step.ReadMailSteps.userCheckReceivedEmailFromSenderUsingSubject(ReadMailSteps.java:25)
+	at ✽.User check received email from sender using subject(file:src/test/java/featurefile/ComposeMail.feature:13)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenario -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:runner.TestRunner@3f49dace]" name="tearDown" is-config="true" duration-ms="90" started-at="2021-04-13T16:11:29Z" finished-at="2021-04-13T16:11:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- runner.TestRunner -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
