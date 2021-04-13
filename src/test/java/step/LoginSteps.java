@@ -51,7 +51,7 @@ public class LoginSteps extends BaseClass {
     public void userLoggedInUsingUsernameAndPassword() {
         new LoginPage(driver).fillEmailOrPhoneAndClickNext();
         GenericUtilities.waitForPageLoad(driver);
-        Assert.assertEquals(new LoginPage(driver).verifyHiUserPageLoaded(),userName);
+        Assert.assertTrue(new LoginPage(driver).verifyHiUserPageLoaded().equalsIgnoreCase(userName));
         GenericUtilities.waitForPageLoad(driver);
         new LoginPage(driver).fillPasswordAndClickNext();
     }

@@ -20,17 +20,18 @@ import java.util.List;
 
 public class ReadMailPage extends BaseClass {
     static final Logger log = Logger.getLogger(ReadMailPage.class);
-    
-    private static Gmail service;
+
     public ReadMailPage (){
         try {
-            service = BaseClass.getService(RECEIVER_CREDENTIALS_FILE_PATH,RECEIVER_TOKENS_DIRECTORY_PATH,RECEIVER_APPLICATION_NAME);
-            log.info("service   "+service);
+            Gmail service = BaseClass.getService(RECEIVER_CREDENTIALS_FILE_PATH, RECEIVER_TOKENS_DIRECTORY_PATH, RECEIVER_APPLICATION_NAME);
+            log.info("service   "+ service);
         } catch (IOException | GeneralSecurityException e) {
             e.printStackTrace();
         }
     }
-
+    /*Check Message exist from list of all Messages of the user's mailbox matching the query
+        returns true if exist or false
+     */
     public static boolean isMailExist(String messageTitle) {
         try {
             Gmail service = BaseClass.getService(RECEIVER_CREDENTIALS_FILE_PATH,RECEIVER_TOKENS_DIRECTORY_PATH,RECEIVER_APPLICATION_NAME);
@@ -45,27 +46,17 @@ public class ReadMailPage extends BaseClass {
         }
     }
 
-    private static List<Message> getMessages(ListMessagesResponse response) {
-        List<Message> messages = new ArrayList<Message>();
-        try {
-            Gmail service = BaseClass.getService(RECEIVER_CREDENTIALS_FILE_PATH,RECEIVER_TOKENS_DIRECTORY_PATH,RECEIVER_APPLICATION_NAME);
-            while (response.getMessages() != null) {
-                messages.addAll(response.getMessages());
-                if (response.getNextPageToken() != null) {
-                    String pageToken = response.getNextPageToken();
-                    response = service.users().messages().list(USER_ID)
-                            .setPageToken(pageToken).execute();
-                } else {
-                    break;
-                }
-            }
-            return messages;
-        } catch (Exception e) {
-            log.info("Exception log " + e);
-            return messages;
-        }
-    }
+    /*Get a Message and use it to create a MIME Message.
+    Args:
+        service: Authorized Gmail API service instance.
+        user_id: User's email address. The special value "me"
+        can be used to indicate the authenticated user.
+        msg_id: The ID of the Message required.
 
+    Returns: A MIME Message, consisting of data from Message.
+        The format can vary there are many as full, "full": Returns the full email message data with body
+        content parsed in the payload field; the raw field is not used. (default)
+     */
     public static int getTotalCountOfMails(String RECEIVER_APPLICATION_NAME) {
         int size;
         try {
@@ -79,8 +70,19 @@ public class ReadMailPage extends BaseClass {
         return size;
     }
 
-    public static List<Message> listMessagesMatchingQuery(Gmail service, String userId,
-                                                          String query) throws IOException {
+    /*List all Messages of the user's mailbox matching the query.
+
+        Args:
+            service: Authorized Gmail API service instance.
+            user_id: User's email address. The special value "me"
+                can be used to indicate the authenticated user.
+            query: String used to filter messages returned.
+                Eg.- 'from:user@some_domain.com' for Messages from a particular sender.
+
+        Returns: List of Messages that match the criteria of the query. Note that the
+            returned list contains Message IDs, you must use get with the appropriate ID to get the details of a Message.
+    */
+    public static List<Message> listMessagesMatchingQuery(Gmail service, String userId, String query) throws IOException {
         ListMessagesResponse response = service.users().messages().list(userId).setQ(query).execute();
         List<Message> messages = new ArrayList<Message>();
         while (response.getMessages() != null) {
@@ -99,10 +101,21 @@ public class ReadMailPage extends BaseClass {
     public static Message getMessage(Gmail service, String userId, List<Message> messages, int index)
             throws IOException {
         Message message = service.users().messages().get(userId, messages.get(index).getId()).execute();
-        //log.info("message   "+message);
+        //log.info("message "+message);
         return message;
     }
 
+    /* List all Messages of the user's mailbox matching the query.
+
+        Args:
+            service: Authorized Gmail API service instance.
+            user_id: User's email address. The special value "me"
+                can be used to indicate the authenticated user.
+            query: String used to filter messages returned.
+                Eg.- 'from:user@some_domain.com' for Messages from a particular sender.
+
+        Returns: Hash map contains threadId, From, To, Subject, Date and Body
+    */
     public static HashMap<String, String> getGmailData(String query) {
         HashMap<String, String> hm = new HashMap<String, String>();
         try {

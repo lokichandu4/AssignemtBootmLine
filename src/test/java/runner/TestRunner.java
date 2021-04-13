@@ -6,6 +6,7 @@ import cucumber.api.testng.PickleEventWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 import org.apache.log4j.BasicConfigurator;
 import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import utility.BrowserFactory;
 
 @CucumberOptions(features ="src/test/java/featurefile/",
@@ -26,7 +27,6 @@ public class TestRunner extends BaseClass{
 
     @BeforeClass(alwaysRun = true)
     public void beforeClass() {
-
         refBrowserFactory = new BrowserFactory();
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }

@@ -33,7 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class BaseClass {
-    public static final String APP_URL = "https://accounts.google.com/signin"; //"https://accounts.google.com/servicelogin";
+
+    public static final String APP_URL = "https://accounts.google.com/signin";
     public static final String CHROME_DRIVER_PATH = System.getProperty("user.dir") + "/Executables/chromedriver";
     public static final String CHROME_DRIVER_PATH_WIN = System.getProperty("user.dir") + "/Executables/chromedriver.exe";
     //Global Variables
@@ -48,9 +49,11 @@ public class BaseClass {
     protected static final int ELEMENT_INTERACTION_TIMEOUT_SECS = 60; //setting WebDriver wait to 2 minutes
 
     public static String userName ="aprilAutomationSendMail@gmail.com";
-    public static String passWord ="Apr@13word";
+    public static String passWord ="PUYdlbO$XORY";
     protected static String senderEmail =  "aprilautomationsendmail@gmail.com";
+    public static String senderEmailPassWord ="PUYdlbO$XORY";
     protected static String receiverEmail =  "aprilAutomationreceivemail@gmail.com";
+    public static String receiverEmailPassWord ="PUYdlbO$XORY";
     protected static final String SENDER_APPLICATION_NAME = "Send_Desktop_Client";
     protected static final String RECEIVER_APPLICATION_NAME = "Receive_Desktop_Client";
     protected static final String APPLICATION_NAME = "Send_Desktop_Client";
@@ -85,11 +88,15 @@ public class BaseClass {
             File.separator + "resources" +
             File.separator + "credentials_receiver";
 
-
-
+    /**
+     * Creates an authorized Credential object.
+     * @param HTTP_TRANSPORT The network HTTP Transport.
+     * @return An authorized Credential object.
+     * @throws IOException If the credentials.json file cannot be found.
+     */
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT,String CREDENTIALS_FILE_PATH,String TOKENS_DIRECTORY_PATH) throws IOException {
         // Load client secrets.
-        InputStream in = new FileInputStream(new File(CREDENTIALS_FILE_PATH));//new File(CREDENTIALS_FILE_PATH
+        InputStream in = new FileInputStream(new File(CREDENTIALS_FILE_PATH));
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);//
         }

@@ -23,7 +23,7 @@ public class GenericUtilities extends BaseClass {
 
     public static void waitForPageLoad(WebDriver pageDriver) {
         try {
-            intWaitForSecs(8000);
+            intWaitForSecs(900);
         } catch (Exception ignored) { }
         Wait<WebDriver> wait = new WebDriverWait(pageDriver, ELEMENT_INTERACTION_TIMEOUT_SECS);
         wait.until(new Function<WebDriver, Boolean>() {
@@ -45,6 +45,30 @@ public class GenericUtilities extends BaseClass {
             action.moveToElement(scanEle).click().build().perform();
         } catch (Exception e) {
             webElement.click();
+        }
+    }
+
+    public static void moveMouseToWebElementUsingJScript(WebDriver driverweb, WebElement element) {
+        try {
+            String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
+            ((JavascriptExecutor) driverweb).executeScript(mouseOverScript, element);
+            intWaitForSecs(900);
+        } catch (Exception ignored) {
+        }
+    }
+
+    public static void moveMouseToClickOnSubMenu(WebDriver driverweb, WebElement hoverElement, WebElement clickElement) {
+        try {
+            Actions builder = new Actions(driverweb);
+            builder.moveToElement(hoverElement).click().build().perform();
+            builder.moveToElement(clickElement).click().build().perform();
+        } catch (Exception e) {
+            moveMouseToWebElementUsingJScript(driverweb, hoverElement);
+            intWaitForSecs(2000);
+            hoverElement.sendKeys(Keys.RETURN);
+            moveMouseToWebElementUsingJScript(driverweb, clickElement);
+            intWaitForSecs(2000);
+            clickElement.sendKeys(Keys.RETURN);
         }
     }
 

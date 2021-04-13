@@ -19,6 +19,9 @@ public class Hooks extends BaseClass {
          gu = new GenericUtilities();
     }
 
+    /*
+    Takes screenshot of browser window if pass or fails at end of test case
+     */
     public void reporting(Scenario scenario){
         String ScenarioName = scenario.getName();
         String currentTimeStamp = GenericUtilities.currentDate("yyyy.MM.dd.HH.mm.ss");
