@@ -8,7 +8,7 @@
           <include name="tearDown"/>
           <include name="beforeSuite"/>
           <include name="beforeClass"/>
-          <include name="scenario" invocation-numbers="0 1"/>
+          <include name="scenario" invocation-numbers="0"/>
         </methods>
       </class> <!-- runner.TestRunner -->
     </classes>

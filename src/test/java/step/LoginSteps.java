@@ -50,6 +50,7 @@ public class LoginSteps extends BaseClass {
     @When("User logged in using username and password")
     public void userLoggedInUsingUsernameAndPassword() {
         new LoginPage(driver).fillEmailOrPhoneAndClickNext();
+        GenericUtilities.waitForPageLoad(driver);
         Assert.assertEquals(new LoginPage(driver).verifyHiUserPageLoaded(),userName);
         GenericUtilities.waitForPageLoad(driver);
         new LoginPage(driver).fillPasswordAndClickNext();

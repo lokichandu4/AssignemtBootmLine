@@ -2,3 +2,6 @@
 /.idea/
 /src/test/resources/credentials_receiver/StoredCredential
 /src/test/resources/credentials_sender/StoredCredential
+/MavenReports/CucumberReports/cucumber-html-reports/*
+/MavenReports/CucumberReports/cucumber-html-reports/embeddings
+/ScreenPrints/*

@@ -1,10 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 22.281 s <<< FAILURE! - in TestSuite
-scenario(runner.TestRunner)  Time elapsed: 19.729 s  <<< FAILURE!
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 17.775 s <<< FAILURE! - in TestSuite
+scenario(runner.TestRunner)  Time elapsed: 12.947 s  <<< FAILURE!
 java.lang.AssertionError: Oauth 2.0 not stoping browser automation expected [Couldn't sign you in] but found [sign in]
-
-scenario(runner.TestRunner)  Time elapsed: 1.997 s  <<< FAILURE!
-java.lang.AssertionError: expected [true] but found [false]
 
