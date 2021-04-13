@@ -1,6 +1,6 @@
 Feature: ComposeMail
 
-  @ComposeMail1
+  @ComposeMail
   Scenario:Verify that an email sent from one Gmail account can be received by another Gmail account
     Given User launches the browser and navigates to the Gmail Signin
     When User logged in using username and password

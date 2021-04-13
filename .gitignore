@@ -1,2 +1,4 @@
 /target/
 /.idea/
+/src/test/resources/credentials_receiver/StoredCredential
+/src/test/resources/credentials_sender/StoredCredential
