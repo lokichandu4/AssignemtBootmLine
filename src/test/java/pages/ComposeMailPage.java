@@ -7,18 +7,10 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Properties;
-import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
-import com.google.api.services.gmail.Gmail;
-import com.google.api.services.gmail.model.Message;
 import com.google.api.client.util.Base64;
 import org.apache.log4j.Logger;
 import runner.BaseClass;
@@ -80,7 +72,7 @@ public class ComposeMailPage extends BaseClass {
      */
     public static void sendEmail() throws IOException, GeneralSecurityException, MessagingException {
         Gmail service = BaseClass.getService(SENDER_CREDENTIALS_FILE_PATH,SENDER_TOKENS_DIRECTORY_PATH,SENDER_APPLICATION_NAME);
-        MimeMessage Mimemessage = createEmail(receiverEmail,"me","This my demo test subject","This is my body text");
+        MimeMessage Mimemessage = createEmail(receiverEmail,"me",Message_Subject,Message_Body);//"This my demo test subject","This is my body text"
         Message message = createMessageWithEmail(Mimemessage);
         message = service.users().messages().send("me", message).execute();
         threadId=message.getId();

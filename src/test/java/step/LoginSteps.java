@@ -5,7 +5,9 @@ import com.jayway.restassured.config.EncoderConfig;
 import com.jayway.restassured.config.HttpClientConfig;
 import com.jayway.restassured.config.RestAssuredConfig;
 import com.jayway.restassured.response.Response;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import org.apache.http.params.CoreConnectionPNames;
@@ -47,12 +49,39 @@ public class LoginSteps extends BaseClass {
         new LoginPage(driver).verifyHomePageLoaded();
     }
 
-    @When("User logged in using username and password")
+    @When("Sender Email logged in using username and password")
     public void userLoggedInUsingUsernameAndPassword() {
-        new LoginPage(driver).fillEmailOrPhoneAndClickNext();
+        new LoginPage(driver).fillEmailOrPhoneAndClickNext(senderEmail);
         GenericUtilities.waitForPageLoad(driver);
-        Assert.assertTrue(new LoginPage(driver).verifyHiUserPageLoaded().equalsIgnoreCase(userName));
+        Assert.assertTrue(new LoginPage(driver).verifyHiUserPageLoaded().equalsIgnoreCase(senderEmail));
         GenericUtilities.waitForPageLoad(driver);
-        new LoginPage(driver).fillPasswordAndClickNext();
+        new LoginPage(driver).fillPasswordAndClickNext(senderEmailPassWord);
+    }
+
+    @Then("home page should be displayed")
+    public void homePageShouldBeDisplayed() {
+        GenericUtilities.waitForPageLoad(driver);
+        new LoginPage(driver).verifyWelcomeUserPageLoaded();
+    }
+
+
+    @And("User Logouts from SenderMail")
+    public void userLogoutsFromSenderMail() {
+        new LoginPage(driver).userSignout();
+    }
+
+    @When("Receiver Email logged in using username and password")
+    public void sendermailRemovedFromLoginPage() {
+        new LoginPage(driver).addAnotherUser();
+        new LoginPage(driver).fillEmailOrPhoneAndClickNext(receiverEmail);
+        GenericUtilities.waitForPageLoad(driver);
+        Assert.assertTrue(new LoginPage(driver).verifyHiUserPageLoaded().equalsIgnoreCase(receiverEmail));
+        GenericUtilities.waitForPageLoad(driver);
+        new LoginPage(driver).fillPasswordAndClickNext(receiverEmailPassWord);
+    }
+
+    @And("User Logouts from ReceiverMail")
+    public void userLogoutsFromReceiverMail() {
+        new LoginPage(driver).userSignout();
     }
 }

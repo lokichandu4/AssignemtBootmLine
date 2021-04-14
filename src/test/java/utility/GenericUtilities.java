@@ -1,5 +1,6 @@
 package utility;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,10 +11,13 @@ import runner.BaseClass;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
-public class GenericUtilities extends BaseClass {
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
+public class GenericUtilities extends BaseClass {
+    static final Logger log = Logger.getLogger(GenericUtilities.class);
     public static void intWaitForSecs(long sec) {
         try {
             Thread.sleep(sec);
@@ -102,8 +106,35 @@ public class GenericUtilities extends BaseClass {
         return true;
     }
 
+    public static void waitUntilElementIsClickable(WebDriver webdriver, WebElement element) {
+        WebDriverWait wait = new WebDriverWait(webdriver, ELEMENT_INTERACTION_TIMEOUT_SECS);
+        WebElement elementToBeClickable = wait.until(elementToBeClickable(element));
+    }
+
     public static String currentDate(String pattern) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         return simpleDateFormat.format(new Date());
+    }
+
+    public static boolean checkMatchingTextPresentInList(WebDriver pageDriver, String parentSelector, String selectText) {
+        List<WebElement> parent = pageDriver.findElements(By.cssSelector(parentSelector));
+        for (WebElement child : parent) {
+            if (child.getText().contains(selectText)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkMatchingTextPresentInList(WebDriver pageDriver, List<WebElement> parent, String selectText) {
+        //List<WebElement> parent = pageDriver.findElements(By.cssSelector(parentSelector));
+        for (WebElement child : parent) {
+            //System.out.println(child.getText() +"=====>"+selectText);
+            if (child.getText().trim().contains(selectText)) {
+                log.info(child.getText() +"=====>"+selectText);
+                return true;
+            }
+        }
+        return false;
     }
 }

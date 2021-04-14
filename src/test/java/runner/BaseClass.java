@@ -12,24 +12,13 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
-import com.google.api.services.gmail.model.ListMessagesResponse;
-import com.google.api.services.gmail.model.Message;
-import com.google.api.services.gmail.model.Thread;
-import com.google.api.services.gmail.model.ListMessagesResponse;
-import com.jayway.restassured.path.json.JsonPath;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import utility.BrowserFactory;
 import utility.GenericUtilities;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.*;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.Collections;;
 import java.util.List;
 
 public class BaseClass {
@@ -48,20 +37,24 @@ public class BaseClass {
     public static String BROWSER = "Chrome"; // set it to Firefox to run on Firefox
     protected static final int ELEMENT_INTERACTION_TIMEOUT_SECS = 60; //setting WebDriver wait to 2 minutes
 
-    public static String userName ="aprilAutomationSendMail@gmail.com";
-    public static String passWord ="PUYdlbO$XORY";
+    /*public static String userName ="aprilAutomationSendMail@gmail.com";
+    public static String passWord ="PUYdlbO$XORY";*/
     protected static String senderEmail =  "aprilautomationsendmail@gmail.com";
     public static String senderEmailPassWord ="PUYdlbO$XORY";
+    protected static String senderName =  "Send Mail";
     protected static String receiverEmail =  "aprilAutomationreceivemail@gmail.com";
     public static String receiverEmailPassWord ="PUYdlbO$XORY";
+    protected static String receiverName =  "Receive Mail";
     protected static final String SENDER_APPLICATION_NAME = "Send_Desktop_Client";
     protected static final String RECEIVER_APPLICATION_NAME = "Receive_Desktop_Client";
     protected static final String APPLICATION_NAME = "Send_Desktop_Client";
     protected static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     protected static final String USER_ID = "me";
     protected static final String Message_Subject = "This my demo test subject";
+    protected static final String Message_Body = "This is my body text";
     private static final List<String> SCOPES = Collections.singletonList(GmailScopes.MAIL_GOOGLE_COM);
     public static String threadId ="";
+    public static String sentTimeStamp ="";
     protected static final String SENDER_CREDENTIALS_FILE_PATH = System.getProperty("user.dir") +
             File.separator + "src" +
             File.separator + "test" +
@@ -119,9 +112,5 @@ public class BaseClass {
                 .build();
         return service;
     }
-
-
-
-
 
 }

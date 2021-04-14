@@ -1,26 +1,21 @@
 package pages;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import runner.BaseClass;
 import utility.GenericUtilities;
-
-import java.util.Set;
+import java.util.List;
 
 public class LoginPage extends BaseClass{
 
     static final Logger log = Logger.getLogger(ComposeMailPage.class);
 
-    @FindBy(css="[id='identifierId']")
-    private WebElement input_emailOrPhone;
+
 
     @FindBy(css="[id='profileIdentifier']")
     private WebElement text_profile;
@@ -37,7 +32,7 @@ public class LoginPage extends BaseClass{
     @FindBy(css="a[aria-label='Google apps']")
     private WebElement label_googleApps;
 
-    @FindBy(xpath="//a[@href='https://mail.google.com/mail/?tab=km']")
+    @FindBy(css="a[href^='https://mail.google.com/mail/']")
     private WebElement link_gmail;
 
     @FindBy(css="input[aria-label='Search mail']")
@@ -49,11 +44,18 @@ public class LoginPage extends BaseClass{
     @FindBy(css="a[aria-label^='Google Account']")
     private WebElement link_profile;
 
+    @FindBy(xpath="//div[contains(text(),'Remove an account')]")
+    private WebElement button_RemoveAnAccount;
+
+    @FindBy(css="[id=\"profileIdentifier\"]")
+    private WebElement text_emailAddress;
 
 
     By header_signIn = By.cssSelector("[id='headingText']");
+    By input_emailOrPhone = By.cssSelector("[id='identifierId']");
+    By button_useAnotherAccount = By.xpath("//div[contains(text(),'Use another account')]");
     By button_next = By.xpath("//button/*[contains(text(),'Next')]");
-
+    By button_signout  = By.xpath("//a[contains(text(),'Sign out')]");
 
     //*[contains(text(),'Compose')][@role='button']
 
@@ -65,8 +67,9 @@ public class LoginPage extends BaseClass{
 
     public void verifyHomePageLoaded(){
         WebElement signIn = GenericUtilities.waitUntilElementPresent(header_signIn);
+        WebElement emailOrPhone = GenericUtilities.waitUntilElementPresent(input_emailOrPhone);
         WebElement next = GenericUtilities.waitUntilElementPresent(button_next);
-        Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver,signIn,input_emailOrPhone,next));
+        Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver,signIn,emailOrPhone,next));
         log.info("Home Page Loaded");
     }
 
@@ -77,8 +80,10 @@ public class LoginPage extends BaseClass{
     /*
      Fill Email and click on Next Button
      */
-    public void fillEmailOrPhoneAndClickNext(){
-        input_emailOrPhone.sendKeys(userName);
+    public void fillEmailOrPhoneAndClickNext(String email){
+        //GenericUtilities.intWaitForSecs(4000);
+        WebElement emailOrPhone = GenericUtilities.waitUntilElementPresent(input_emailOrPhone);
+        GenericUtilities.waitUntilElementDisplayed(emailOrPhone).sendKeys(email);
         clickOnNext();
         log.info("Entered Email or Phone");
     }
@@ -100,7 +105,7 @@ public class LoginPage extends BaseClass{
     /*
      Fill Password and click on Next Button
      */
-    public void fillPasswordAndClickNext(){
+    public void fillPasswordAndClickNext(String passWord){
         input_password.sendKeys(passWord);
         clickOnNext();
         log.info("Entered Password");
@@ -108,18 +113,57 @@ public class LoginPage extends BaseClass{
         catch (Exception ignored) {}
     }
 
+    /*
+    Checks if Welcome User Page loaded and redirect Gmail Application
+    */
     public void verifyWelcomeUserPageLoaded(){
         GenericUtilities.intWaitForSecs(4000);
-        Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver,label_welcome,input_search,label_googleApps));
-        /*GenericUtilities.clickUsingAction(driver,label_googleApps);*/
-        /*if(!link_gmail.isDisplayed()) GenericUtilities.clickUsingAction(driver,label_googleApps);
-        GenericUtilities.moveMouseToWebElementUsingJScript(driver,link_gmail);
-        GenericUtilities.clickUsingAction(driver,link_gmail);*/
-        String url = link_gmail.getAttribute("href");
-        log.info("url ==== > "+url);
-        driver.get("https://mail.google.com/mail/?tab=km");
-        log.info("Clicked on gmail app");
-        Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver,input_searchMail,link_inbox,link_profile));
+        if(!driver.getCurrentUrl().contains("https://mail.google.com/mail/u/0/#inbox")) {
+            log.info("Current Page url ="+driver.getCurrentUrl());
+            Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver, label_welcome, input_search, label_googleApps));
+            GenericUtilities.clickUsingAction(driver, label_googleApps);
+            driver.get("https://mail.google.com/mail/?tab=km");
+            log.info("Clicked on gmail app");
+        } Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver,input_searchMail,link_inbox,link_profile));
         log.info("gmail page loaded");
     }
+
+    /*
+    Signout the user from Gmail Application
+    */
+    public void userSignout() {
+        GenericUtilities.waitUntilElementIsClickable(driver, link_profile);
+        link_profile.click();
+        GenericUtilities.intWaitForSecs(2000);
+        int retry =3;
+        while(retry>=3){
+            log.info("inside logout"+retry);
+            List<WebElement> btn_accountLogout = driver.findElements(button_signout);
+            if(btn_accountLogout.size()>0){
+                btn_accountLogout.get(0).click(); break;
+            } else {
+                link_profile.click();
+                GenericUtilities.intWaitForSecs(2000);
+            } retry--;
+        }
+        WebElement signIn  = GenericUtilities.waitUntilElementPresent(header_signIn);
+        Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver,signIn));
+    }
+
+    /*
+    Checks Add Another User, If present continue as Another User
+    */
+    public void addAnotherUser(){
+        WebElement signIn  = GenericUtilities.waitUntilElementPresent(header_signIn);
+        List<WebElement> useAnotherAccount = driver.findElements(button_useAnotherAccount);
+        if(useAnotherAccount.size()>0) {
+            WebElement useAnotherAccountBtn = GenericUtilities.waitUntilElementPresent(button_useAnotherAccount);
+            Assert.assertTrue(GenericUtilities.verifyListOfWebElementsDisplayed(driver, signIn, useAnotherAccountBtn, button_RemoveAnAccount, text_emailAddress));
+            Assert.assertEquals(signIn.getText().trim(), "Choose an account");
+            Assert.assertTrue(text_emailAddress.getText().trim().equalsIgnoreCase(senderEmail));
+            useAnotherAccountBtn.click();
+        }
+        log.info("Clicked on Use Another Account");
+    }
+
 }
