@@ -23,7 +23,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,7 +37,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Suite">
-              <span class="suite-name border-failed">Suite</span>
+              <span class="suite-name border-passed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -90,21 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
-                    </span>
-                    <div class="method-list-content failed suite-Suite">
-                      <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.TestRunner" hash-for-method="scenario(&quot;Verify that an email sent from one Gmail account can be received by another Gmail account&quot;, &quot;Compos...)">scenario("Verify that an email sent from one Gmail account can be received by another Gmail account", "Compos...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-Suite -->
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -116,6 +102,11 @@
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.TestRunner" hash-for-method="scenario(&quot;Verify that an email sent from one Gmail account can be received by another Gmail account&quot;, &quot;Compos...)">scenario("Verify that an email sent from one Gmail account can be received by another Gmail account", "Compos...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.TestRunner" hash-for-method="scenario(&quot;Verify that an email sent from one Gmail account can be received by another Gmail account Using&quot;, &quot;...)">scenario("Verify that an email sent from one Gmail account can be received by another Gmail account Using", "...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -130,36 +121,6 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">runner.TestRunner</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="scenario(&quot;Verify that an email sent from one Gmail account can be received by another Gmail account&quot;, &quot;Compos...)">
-                  </a> <!-- scenario("Verify that an email sent from one Gmail account can be received by another Gmail account", "Compos...) -->
-                  <span class="method-name">scenario</span>
-                  <span class="parameters">("Verify that an email sent from one Gmail account can be received by another Gmail account", "ComposeMail")</span>
-                  <div class="stack-trace"><b>"java.lang.AssertionError: Oauth 2.0 not stoping browser automation expected [Couldn&apos;t sign you in] but found [sign in]
-	at pages.LoginPage.verifyHiUserPageLoaded(LoginPage.java:57)
-	at step.LoginSteps.userLoggedInUsingUsernameAndPassword(LoginSteps.java:53)
-	at ✽.User logged in using username and password(file:src/test/java/featurefile/ComposeMail.feature:6)
-... Removed 4 stack frames<br/> java.lang.AssertionError: Oauth 2.0 not stoping browser automation expected [Couldn&apos;t sign you in] but found [sign in]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:176)
-	at pages.LoginPage.verifyHiUserPageLoaded(LoginPage.java:57)
-	at step.LoginSteps.userLoggedInUsingUsernameAndPassword(LoginSteps.java:53)
-	at ✽.User logged in using username and password(file:src/test/java/featurefile/ComposeMail.feature:6)
-"</b><br>org.testng.Assert.fail(Assert.java:94)<br>org.testng.Assert.failNotEquals(Assert.java:494)<br>org.testng.Assert.assertEquals(Assert.java:123)<br>org.testng.Assert.assertEquals(Assert.java:176)<br>pages.LoginPage.verifyHiUserPageLoaded(LoginPage.java:57)<br>step.LoginSteps.userLoggedInUsingUsernameAndPassword(LoginSteps.java:53)<br>✽.User logged in using username and password(file:src/test/java/featurefile/ComposeMail.feature:6)<br>
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-failed -->
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -172,6 +133,14 @@
                   </a> <!-- scenario("Verify that an email sent from one Gmail account can be received by another Gmail account", "Compos...) -->
                   <span class="method-name">scenario</span>
                   <span class="parameters">("Verify that an email sent from one Gmail account can be received by another Gmail account", "ComposeMail")</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="scenario(&quot;Verify that an email sent from one Gmail account can be received by another Gmail account Using&quot;, &quot;...)">
+                  </a> <!-- scenario("Verify that an email sent from one Gmail account can be received by another Gmail account Using", "...) -->
+                  <span class="method-name">scenario</span>
+                  <span class="parameters">("Verify that an email sent from one Gmail account can be received by another Gmail account Using", "ComposeMail")</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -240,16 +209,16 @@ data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'scenario')
 data.setCell(0, 2, 'runner.TestRunner')
-data.setCell(0, 3, 12936);
+data.setCell(0, 3, 70723);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'scenario')
 data.setCell(1, 2, 'runner.TestRunner')
-data.setCell(1, 3, 4096);
+data.setCell(1, 3, 3964);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 17 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -282,21 +251,19 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">beforeClass</span>
-                <span class="method-start">31 ms</span>
+                <span class="method-start">23 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">scenario("Verify that an email sent from one Gmail account can be received by another Gmail account", "Compos...)</span>
-                <span class="method-start">151 ms</span>
+                <span class="method-name">scenario("Verify that an email sent from one Gmail account can be received by another Gmail account Using", "...)</span>
+                <span class="method-start">137 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">scenario("Verify that an email sent from one Gmail account can be received by another Gmail account", "Compos...)</span>
-                <span class="method-start">13094 ms</span>
+                <span class="method-start">70860 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">17190 ms</span>
+                <span class="method-start">74825 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

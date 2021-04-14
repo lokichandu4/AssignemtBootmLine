@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="2" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="17331" started-at="2021-04-13T11:07:08Z" finished-at="2021-04-13T11:07:25Z">
+  <suite name="Suite" duration-ms="74866" started-at="2021-04-14T03:17:57Z" finished-at="2021-04-14T03:19:12Z">
     <groups>
       <group name="cucumber scenarios">
         <method signature="TestRunner.scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" class="runner.TestRunner"/>
       </group> <!-- cucumber scenarios -->
     </groups>
-    <test name="Test" duration-ms="17331" started-at="2021-04-13T11:07:08Z" finished-at="2021-04-13T11:07:25Z">
+    <test name="Test" duration-ms="74866" started-at="2021-04-14T03:17:57Z" finished-at="2021-04-14T03:19:12Z">
       <class name="runner.TestRunner">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:runner.TestRunner@3f49dace]" name="beforeSuite" is-config="true" duration-ms="27" started-at="2021-04-13T16:37:08Z" finished-at="2021-04-13T16:37:08Z">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:runner.TestRunner@3f49dace]" name="beforeSuite" is-config="true" duration-ms="19" started-at="2021-04-14T08:47:57Z" finished-at="2021-04-14T08:47:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:runner.TestRunner@3f49dace]" name="beforeClass" is-config="true" duration-ms="101" started-at="2021-04-13T16:37:08Z" finished-at="2021-04-13T16:37:08Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:runner.TestRunner@3f49dace]" name="beforeClass" is-config="true" duration-ms="95" started-at="2021-04-14T08:47:57Z" finished-at="2021-04-14T08:47:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="FAIL" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" duration-ms="12936" started-at="2021-04-13T16:37:08Z" data-provider="scenarios" finished-at="2021-04-13T16:37:21Z">
+        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" duration-ms="70723" started-at="2021-04-14T08:47:58Z" data-provider="scenarios" finished-at="2021-04-14T08:49:08Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verify that an email sent from one Gmail account can be received by another Gmail account"]]>
+                <![CDATA["Verify that an email sent from one Gmail account can be received by another Gmail account Using"]]>
               </value>
             </param>
             <param index="1">
@@ -31,26 +31,10 @@
               </value>
             </param>
           </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Oauth 2.0 not stoping browser automation expected [Couldn't sign you in] but found [sign in]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Oauth 2.0 not stoping browser automation expected [Couldn't sign you in] but found [sign in]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:176)
-	at pages.LoginPage.verifyHiUserPageLoaded(LoginPage.java:57)
-	at step.LoginSteps.userLoggedInUsingUsernameAndPassword(LoginSteps.java:53)
-	at ✽.User logged in using username and password(file:src/test/java/featurefile/ComposeMail.feature:6)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario -->
-        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" duration-ms="4096" started-at="2021-04-13T16:37:21Z" data-provider="scenarios" finished-at="2021-04-13T16:37:25Z">
+        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@3f49dace]" name="scenario" duration-ms="3964" started-at="2021-04-14T08:49:08Z" data-provider="scenarios" finished-at="2021-04-14T08:49:12Z">
           <params>
             <param index="0">
               <value>
@@ -66,7 +50,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:runner.TestRunner@3f49dace]" name="tearDown" is-config="true" duration-ms="165" started-at="2021-04-13T16:37:25Z" finished-at="2021-04-13T16:37:25Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:runner.TestRunner@3f49dace]" name="tearDown" is-config="true" duration-ms="60" started-at="2021-04-14T08:49:12Z" finished-at="2021-04-14T08:49:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

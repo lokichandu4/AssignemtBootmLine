@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Apr 13 16:37:08 IST 2021</td>
+<td>Started on:</td><td>Wed Apr 14 08:47:57 IST 2021</td>
 </tr>
-<tr><td>Total time:</td><td>17 seconds (17331 ms)</td>
+<tr><td>Total time:</td><td>74 seconds (74866 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,32 +67,6 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='runner.TestRunner.scenario()'><b>scenario</b><br>Test class: runner.TestRunner<br>Parameters: "Verify that an email sent from one Gmail account can be received by another Gmail account", "ComposeMail"</td>
-<td><div><pre>java.lang.AssertionError: Oauth 2.0 not stoping browser automation expected [Couldn&apos;t sign you in] but found [sign in]
-	at pages.LoginPage.verifyHiUserPageLoaded(LoginPage.java:57)
-	at step.LoginSteps.userLoggedInUsingUsernameAndPassword(LoginSteps.java:53)
-	at ✽.User logged in using username and password(file:src/test/java/featurefile/ComposeMail.feature:6)
-... Removed 4 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace452364286", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace452364286'><pre>java.lang.AssertionError: Oauth 2.0 not stoping browser automation expected [Couldn&apos;t sign you in] but found [sign in]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:176)
-	at pages.LoginPage.verifyHiUserPageLoaded(LoginPage.java:57)
-	at step.LoginSteps.userLoggedInUsingUsernameAndPassword(LoginSteps.java:53)
-	at ✽.User logged in using username and password(file:src/test/java/featurefile/ComposeMail.feature:6)
-</pre></div></td>
-<td>12</td>
-<td>runner.TestRunner@3f49dace</td></tr>
-</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -101,9 +75,14 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='runner.TestRunner.scenario()'><b>scenario</b><br>Test class: runner.TestRunner<br>Parameters: "Verify that an email sent from one Gmail account can be received by another Gmail account Using", "ComposeMail"</td>
+<td></td>
+<td>70</td>
+<td>runner.TestRunner@3f49dace</td></tr>
+<tr>
 <td title='runner.TestRunner.scenario()'><b>scenario</b><br>Test class: runner.TestRunner<br>Parameters: "Verify that an email sent from one Gmail account can be received by another Gmail account", "ComposeMail"</td>
 <td></td>
-<td>4</td>
+<td>3</td>
 <td>runner.TestRunner@3f49dace</td></tr>
 </table><p>
 </body>

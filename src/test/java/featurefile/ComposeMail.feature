@@ -17,7 +17,7 @@ Feature: ComposeMail
 
 
 #Api Scenario using Restassured: Working, implemented using Gmail API
-  @ComposeMail1
+  @ComposeMail
   Scenario:Verify that an email sent from one Gmail account can be received by another Gmail account
     Given User sends email using the predefined subject and message to sender email
     When User check received email from sender using subject
