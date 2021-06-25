@@ -7,7 +7,7 @@ trigger:
 - master_old
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: MVSLocalPool
 
 steps:
 - task: Maven@3
